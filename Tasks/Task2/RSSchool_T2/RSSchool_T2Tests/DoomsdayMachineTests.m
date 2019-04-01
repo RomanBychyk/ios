@@ -19,7 +19,7 @@
 }
 
 - (void)test1 {
-  XCTAssertTrue([@"Sunday, August 14, 2208" isEqualToString:[self.machine doomsdayString]]);
+  XCTAssertEqual(@"Sunday, August 14, 2208", [self.machine doomsdayString]);
 }
 
 - (void)test2 {

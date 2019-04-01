@@ -51,5 +51,8 @@
   XCTAssertTrue([@"1994" isEqualToString:[self.translator arabicFromRoman:@"MCMXCIV"]]);
 }
 
+- (void)test11 {
+    XCTAssertTrue([@"446" isEqualToString:[self.translator arabicFromRoman:@"CDXLVI"]]);
+}
 
 @end

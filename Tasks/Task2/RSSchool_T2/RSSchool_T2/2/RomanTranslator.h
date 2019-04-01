@@ -38,4 +38,9 @@
  @return an arabic number string
  */
 - (NSString *)arabicFromRoman:(NSString *)romanString;
+
+- (NSUInteger) getValueFromChar: (unichar) ch;
+
+- (NSString *) getCharFromValue: (int) digit withNumberOrder: (int) order;
+
 @end

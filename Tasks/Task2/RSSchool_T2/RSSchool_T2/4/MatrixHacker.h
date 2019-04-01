@@ -23,13 +23,32 @@
 - (BOOL)isClone;
 + (instancetype)createWithName:(NSString *)name isClone:(BOOL)clone;
 @end
-@interface MatrixHacker : NSObject
+
+typedef id<Character> (^CharacterProcessor)(NSString *name);
+
+@interface Char : NSObject <Character>
+
+@property (nonatomic, assign) BOOL isClone;
+@property (nonatomic, assign) NSString* name;
+
+- (BOOL) isEqual:(id)object;
+
+- (NSString *)name;
+- (BOOL)isClone;
++ (instancetype)createWithName:(NSString *)name isClone:(BOOL)clone;
+@end
+
+
+
+@interface Matrix : NSObject
+
 /**
  Injects the given block into the Matrix by saving it in the class.
 
  @param theBlock the block of code to be injected
  */
-- (void)injectCode:(id<Character> (^)(NSString *name))theBlock;
+- (void)injectCode:(CharacterProcessor)theBlock;
+
 /**
  Runs the saved block of code against every element of the array
 
@@ -37,4 +56,10 @@
  @return an array of character after applying the injected block
  */
 - (NSArray<id<Character>> *)runCodeWithData:(NSArray<NSString *> *)names;
+
+@end
+
+@interface MatrixHacker : NSObject
+- (CharacterProcessor) injectionBlock;
+
 @end
